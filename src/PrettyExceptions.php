@@ -60,7 +60,7 @@ class PrettyExceptions
 	/**
 	 * Pretty Exceptions
 	 */
-	protected $_uri = '/pretty-exceptions/';
+	protected $_uri = '//cdn.rawgit.com/jimmdigrizli/pretty-exceptions/master/public/';
 
 	/**
 	 * Flag to control that only one exception/error is show at time
@@ -143,7 +143,7 @@ class PrettyExceptions
 	 */
 	public function getCssSources()
 	{
-		return '<link href="' . $this->_uri . 'themes/' . $this->_theme . '.css" type="text/css" rel="stylesheet" />';
+		return '<link href="' . $this->_uri . 'css/' . $this->_theme . '.css" type="text/css" rel="stylesheet" />';
 	}
 
 	/**
