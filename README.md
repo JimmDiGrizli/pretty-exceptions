@@ -15,33 +15,15 @@ The code in this repository is written in PHP.
 
 ## Automatic Usage
 
-The easiest way to use this utility is include its 'loader':
-
-```php
-require '/path/to/pretty-exceptions/loader.php';
-```
-
-## Manual include
-
-Or you could include the utility manually or via an autoloader:
+The easiest way to use this utility is call static methods:
 
 ```php
 
-//Requiring the file
-require '/path/to/pretty-exceptions/Library.php';
-
-//Or using an autoloader
-$loader = new Phalcon\Loader();
-
-$loader->registerNamespaces(array(
-        'Phalcon\\Utils' => '/path/to/pretty-exceptions/Library/Phalcon/Utils/'
-));
-
-$loader->register();
-
+GetSky\Phalcon\Utils\PrettyExceptions::listenException();
+GetSky\Phalcon\Utils\PrettyExceptions::listenError();
 ```
 
-## Usage
+## Manual Usage
 
 Listen for exceptions:
 
@@ -49,7 +31,7 @@ Listen for exceptions:
 
 set_exception_handler(function($e)
 {
-	$p = new \Phalcon\Utils\PrettyExceptions();
+	$p = new GetSky\Phalcon\Utils\PrettyExceptions();
 	return $p->handle($e);
 });
 
@@ -61,7 +43,7 @@ Listen for user errors/warnings/notices:
 
 set_error_handler(function($errorCode, $errorMessage, $errorFile, $errorLine)
 {
-	$p = new \Phalcon\Utils\PrettyExceptions();
+	$p = new GetSky\Phalcon\Utils\PrettyExceptions();
 	return $p->handleError($errorCode, $errorMessage, $errorFile, $errorLine);
 });
 
@@ -73,7 +55,7 @@ The following is the way to configure the utility:
 
 ```php
 
-$p = new \Phalcon\Utils\PrettyExceptions();
+$p = new GetSky\Phalcon\Utils\PrettyExceptions();
 
 //Change the base uri for static resources
 $p->setBaseUri('/');

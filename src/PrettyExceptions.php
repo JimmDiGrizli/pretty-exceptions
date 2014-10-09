@@ -18,7 +18,7 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Utils;
+namespace GetSky\Phalcon\Utils;
 
 /**
  * Phalcon\PrettyExceptions
@@ -75,6 +75,30 @@ class PrettyExceptions
 	public function __construct($application = null) {
 		$this->_application =& $application;
 	}
+
+    /**
+     * Set exception handler
+     */
+    public static function listenException() {
+        set_exception_handler(
+            function($e) {
+                $p = new PrettyExceptions();
+                return $p->handle($e);
+            }
+        );
+    }
+
+    /**
+     * Set error handler
+     */
+    public static function listenError() {
+        set_error_handler(
+            function($errorCode, $errorMessage, $errorFile, $errorLine) {
+                $p = new PrettyExceptions();
+                return $p->handleError($errorCode, $errorMessage, $errorFile, $errorLine);
+            }
+        );
+    }
 
 	/**
 	 * Set if the application's files must be opened an showed as part of the backtrace
