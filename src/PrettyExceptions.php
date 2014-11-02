@@ -481,7 +481,7 @@ class PrettyExceptions
 			echo '</table></div>';
 		}
 
-		$this->_showApplicationDump($application);
+		$this->showApplicationDump($application);
 
 		echo $this->getVersion();
 
